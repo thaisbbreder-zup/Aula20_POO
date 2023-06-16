@@ -33,7 +33,9 @@ public class Loja {
         Set<Integer> codigoSet = new HashSet<>();
         for (Produtos produto : novosProdutos) {
             if (!codigoSet.add(produto.getCodigoDeBarra())) {
-                System.out.printf("\n----------------------> Atenção! <----------------------\nAltere o código do produto: %s. \nO código está incorreto ou duplicado.%n", produto.getNome());
+                System.out.printf("\n----------------------> Atenção! <----------------------" +
+                        "\nAltere o código do produto: %s. " +
+                        "\nO código está incorreto ou duplicado.%n", produto.getNome());
             }
         }
 
