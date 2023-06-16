@@ -2,10 +2,14 @@ package Ex01_ClassesAbstratas;
 
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 
 public class Loja {
     public static void main(String[] args) {
+
+        Scanner entradaDoUsuario = new Scanner(System.in);
+
         //Lista novosProdutos armazenará objetos da classe Produtos;
         //Produtos é uma classe abstrata (superclasse das classes CDs, Livros e DVDs);
         ArrayList<Produtos> novosProdutos = new ArrayList<>();
@@ -23,25 +27,53 @@ public class Loja {
         novosProdutos.add(livro2);
         novosProdutos.add(dvd1);
 
-        System.out.println("\n--------------------- ITENS DA LOJA ---------------------");
-        //for (int i = 0; i < novosProdutos.size(); i++) {
-        //    Produtos item = novosProdutos.get(i);
-        //    item.mostrarDetalhesDoItem();
+        System.out.println("\n--------------------- BUSCA DE ITENS ---------------------");
+        System.out.print("Digite o código do produto: ");
+        int codigoInformado = entradaDoUsuario.nextInt();
 
-        //cria um novo conjunto (Set) chamado codigoSet para armazenar os códigos de barra dos produtos
-        //HashSet<Integer>() é a chamada do construtor da classe. Ele é uma implementação da interface Set, que é uma coleção que não permite elementos duplicados
-        Set<Integer> codigoSet = new HashSet<>();
-        for (Produtos produto : novosProdutos) {
-            if (!codigoSet.add(produto.getCodigoDeBarra())) {
-                System.out.printf("\n----------------------> Atenção! <----------------------" +
-                        "\nAltere o código do produto: %s. " +
-                        "\nO código está incorreto ou duplicado.%n", produto.getNome());
+        boolean produtoEmEstoque = false;
+
+        for (int i = 0; i < novosProdutos.size(); i++) {
+            Produtos produto = novosProdutos.get(i);
+            if (produto.getCodigoDeBarra() == codigoInformado) {
+                System.out.println("O produto foi encontrado na posição: " + i);
+                produto.mostrarDetalhesDoItem();
+                produtoEmEstoque = true;
+                break; // Encerra o loop se produto for encontrado
             }
         }
-
-        for (Produtos item : novosProdutos) {
-            item.mostrarDetalhesDoItem();
+        if (produtoEmEstoque == false) {
+            System.out.println("O produto não foi encontrado.");
         }
+
+        System.out.println("\nDeseja ver o catálogo da loja? SIM ou NAO");
+        String simOuNao = entradaDoUsuario.next();
+
+        if (simOuNao.equalsIgnoreCase("SIM")) {
+            System.out.println("\n--------------------- CATÁLOGO DA LOJA ---------------------");
+            //for (int i = 0; i < novosProdutos.size(); i++) {
+            //    Produtos item = novosProdutos.get(i);
+            //    item.mostrarDetalhesDoItem();
+
+            //cria um novo conjunto (Set) chamado codigoSet para armazenar os códigos de barra dos produtos
+            //HashSet<Integer>() é a chamada do construtor da classe. Ele é uma implementação da interface Set, que é uma coleção que não permite elementos duplicados
+            Set<Integer> codigoSet = new HashSet<>();
+            for (Produtos produto : novosProdutos) {
+                if (!codigoSet.add(produto.getCodigoDeBarra())) {
+                    System.out.printf("\n----------------------> Atenção! <----------------------" +
+                            "\nAltere o código do produto: %s. " +
+                            "\nO código está incorreto ou duplicado.%n" + "--------------------------------------------------------",
+                            produto.getNome()
+                    );
+                }
+            }
+
+            for (Produtos item : novosProdutos) {
+                item.mostrarDetalhesDoItem();
+            }
+        };
     }
-}
+        }
+
+
 
