@@ -11,7 +11,7 @@ public class DVDs extends Produtos {
     }
 
     @Override
-    public void mostrarDetalhesDoItem() {
+    public void mostrarDetalhesDoItem(){
         System.out.println("\nCódigo: " + this.codigoDeBarra);
         System.out.println("Nome: " + this.nome);
         System.out.println("Preço: " + this.preco);

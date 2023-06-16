@@ -41,7 +41,7 @@ public abstract class Produtos {
         return Objects.equals(getCodigoDeBarra(), produtos.getCodigoDeBarra());
     }
 
-    public String getNome() {
+    public String getNome(){
         return nome;
     }
 }

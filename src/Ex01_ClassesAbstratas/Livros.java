@@ -3,7 +3,7 @@ package Ex01_ClassesAbstratas;
 public class Livros extends Produtos {
     public String autor;
 
-    public Livros(int codigoDeBarra, String nome, double preco, String autor) {
+    public Livros(int codigoDeBarra, String nome, double preco, String autor){
         this.codigoDeBarra = codigoDeBarra;
         this.nome = nome;
         this.preco = preco;

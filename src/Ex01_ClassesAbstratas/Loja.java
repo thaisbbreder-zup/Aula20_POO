@@ -16,13 +16,17 @@ public class Loja {
 
         //Cria objetos das classes CDs, Livros e DVDs, passando os atributos para os respectivos construtores e adicionando com o método add;
         CDs cd1 = new CDs(1001, "Lover", 42.90, 18);
-        CDs cd2 = new CDs(1001, "Silva canta Marisa", 29.90, 15);
+        CDs cd2 = new CDs(1001, "Lover", 42.90, 18);
+        CDs cd3 = new CDs(1003, "Lover", 42.90, 18);
+        CDs cd4 = new CDs(1004, "Silva canta Marisa", 29.90, 15);
         Livros livro1 = new Livros(2001, "Rita Lee: Uma autobiografia", 50.60, "Rita Lee");
         Livros livro2 = new Livros(2002, "Panelinha", 139.65, "Rita Lobo");
         DVDs dvd1 = new DVDs(3001, "Numanice", 35.70, 135);
 
         novosProdutos.add(cd1);
         novosProdutos.add(cd2);
+        novosProdutos.add(cd3);
+        novosProdutos.add(cd4);
         novosProdutos.add(livro1);
         novosProdutos.add(livro2);
         novosProdutos.add(dvd1);
@@ -36,7 +40,7 @@ public class Loja {
         for (int i = 0; i < novosProdutos.size(); i++) {
             Produtos produto = novosProdutos.get(i);
             if (produto.getCodigoDeBarra() == codigoInformado) {
-                System.out.println("O produto foi encontrado na posição: " + i);
+                System.out.println("O produto foi encontrado no índice: " + i);
                 produto.mostrarDetalhesDoItem();
                 produtoEmEstoque = true;
                 break; // Encerra o loop se produto for encontrado
